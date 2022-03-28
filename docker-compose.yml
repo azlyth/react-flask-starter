@@ -20,6 +20,7 @@ services:
   backend:
     labels:
       shipyard.route: '/api'
+      shipyard.init: 'touch /tmp/backend-data/test-file'
     build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
@@ -27,6 +28,7 @@ services:
       FLASK_DEBUG: '1'
       LOCALSTACK_HOST: 'localstack'
     volumes:
+      - 'backend-data:/tmp/backend-data'
       - './backend/filesystem/entrypoints:/entrypoints:ro'
       - './backend/migrations:/srv/migrations'
       - './backend/src:/srv/src:ro'
@@ -44,7 +46,6 @@ services:
       LOCALSTACK_HOST: 'localstack'
     command: '/entrypoints/worker.sh'
     volumes:
-      - 'backend-data:/tmp/backend-data'
       - './backend/filesystem/entrypoints:/entrypoints:ro'
       - './backend/migrations:/srv/migrations'
       - './backend/src:/srv/src:ro'
