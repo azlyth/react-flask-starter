@@ -44,6 +44,7 @@ services:
       LOCALSTACK_HOST: 'localstack'
     command: '/entrypoints/worker.sh'
     volumes:
+      - 'backend-data:/tmp/backend-data'
       - './backend/filesystem/entrypoints:/entrypoints:ro'
       - './backend/migrations:/srv/migrations'
       - './backend/src:/srv/src:ro'
@@ -75,5 +76,6 @@ services:
       - '4566'
 
 volumes:
+  backend-data:
   postgres:
   localstack:
