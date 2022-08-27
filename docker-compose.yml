@@ -5,6 +5,10 @@ services:
   frontend:
     labels:
       shipyard.route: '/'
+      shipyard.liveness.http.period: 10
+      shipyard.liveness.http.initialDelay: 10
+      shipyard.liveness.http.headers: '{"some-header": "${SOME_VALUE}"}'
+      shipyard.liveness.http.path: '["sh", "/srv/liveness.sh"]'
     build: 'frontend'
     environment:
       CI: 'true'
