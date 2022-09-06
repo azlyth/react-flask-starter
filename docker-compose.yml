@@ -74,6 +74,17 @@ services:
     ports:
       - '4566'
 
+  timescaledb:
+    image: timescaledev/timescaledb-ha:pg12.6-ts2.2.0-p0
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/home/postgres/pgdata/data"
+    volumes:
+      - "timescaledb-data:/home/postgres/pgdata/data"
+    ports:
+      - 5432:5432
+
 volumes:
   postgres:
   localstack:
+  timescaledb-data:
