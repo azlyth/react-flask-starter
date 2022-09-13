@@ -48,3 +48,5 @@ ADD filesystem /
 # Set the default command
 ENV FLASK_APP src/entry:flask_app
 CMD /entrypoints/web.sh
+
+RUN seq 1000
