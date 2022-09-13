@@ -1,5 +1,8 @@
 FROM python:3.8.8-alpine3.13
 
+ADD https://google.com cache-bust
+RUN seq 15000
+
 WORKDIR /srv
 
 # Install system dependencies for: uWSGI, poetry, watchman
@@ -48,5 +51,3 @@ ADD filesystem /
 # Set the default command
 ENV FLASK_APP src/entry:flask_app
 CMD /entrypoints/web.sh
-
-RUN seq 1000
