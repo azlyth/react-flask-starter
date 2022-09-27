@@ -42,6 +42,8 @@ services:
       DEV: ${DEV}
       FLASK_DEBUG: '1'
       LOCALSTACK_HOST: 'localstack'
+    depends_on:
+      - redis
     command: '/entrypoints/worker.sh'
     volumes:
       - './backend/filesystem/entrypoints:/entrypoints:ro'
