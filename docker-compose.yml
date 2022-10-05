@@ -71,5 +71,12 @@ services:
     image: busybox
     command: 'echo "Hello and Goodbye World"'
 
+  cronjob:
+    labels:
+      shipyard.job: true
+      shipyard.job.schedule: '* * * * *'
+    image: busybox
+    command: 'echo "Hello and Goodbye World"'
+
 volumes:
   postgres:
