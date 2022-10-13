@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  frontend:
+  frontend_service:
     labels:
       shipyard.route: '/'
     build: 'frontend'
@@ -33,7 +33,7 @@ services:
     ports:
       - '8080:8080'
 
-  worker:
+  worker_service:
     labels:
       shipyard.init: 'poetry run flask db upgrade'
     build: 'backend'
