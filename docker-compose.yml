@@ -70,6 +70,8 @@ services:
       shipyard.job: true
     image: busybox
     command: 'echo "Hello and Goodbye World"'
+    depends_on:
+    - postgres
 
   cronjob:
     labels:
@@ -77,6 +79,8 @@ services:
       shipyard.job.schedule: '* * * * *'
     image: busybox
     command: 'echo "Hello and Goodbye World"'
+    depends_on:
+    - postgres
 
 volumes:
   postgres:
