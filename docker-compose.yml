@@ -36,6 +36,7 @@ services:
   worker:
     labels:
       shipyard.init: 'poetry run flask db upgrade'
+      shipyard.init.init-container: 'true'
     build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
