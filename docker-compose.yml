@@ -62,7 +62,7 @@ services:
 
   redis:
     image: 'redis:5.0-alpine'
-    user: daemon
+    user: invalid-user
     ports:
       - '6379'
 
